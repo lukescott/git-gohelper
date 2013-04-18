@@ -8,7 +8,7 @@ git-gohelper is a global git alias that adds a formatting/compilation pre-commit
 Run this:
 
 ```bash
-git config --global alias.gohelper '![ -d ".git" ] && echo '"'"'#!/bin/bash
+git config --global alias.gohelper '![ -d ".git" ] && (echo '"'"'#!/bin/bash
 
 errors=$((go build -o _tmpbuild) 2>&1)
 
@@ -35,7 +35,7 @@ then
         echo
         echo "Run \`git gofmt\`"
         exit 1
-fi'"'"' > .git/hooks/pre-commit ; chmod ugo+x .git/hooks/pre-commit ; git config alias.gofmt '"'"'!echo $(git diff --cached --name-only --diff-filter=ACM | grep ".go$") | xargs gofmt -w -l | xargs git add'"'"
+fi'"'"' > .git/hooks/pre-commit ; chmod ugo+x .git/hooks/pre-commit ; git config alias.gofmt '"'"'!echo $(git diff --cached --name-only --diff-filter=ACM | grep ".go$") | xargs gofmt -w -l | xargs git add'"')"
 ```
 
 ## How To
